@@ -32,18 +32,18 @@ leaderRouter.route('/:leaderId')
     next();
 })
 .get((req,res,next) => {
-    res.end('Will send details of the leader: '+req.params+' to you!');
+    res.end('Will send details of the leader: '+req.params.leaderId+' to you!');
 })
 .post((req, res, next) => {
     res.statusCode = 403;
-    res.end('POST operation not supported on /leader/'+req.params);
+    res.end('POST operation not supported on /leader/'+req.params.leaderId);
 })
 .put((req, res, next) => {
-    res.end('Updating the leader:'+ req.params +'\n'+
+    res.end('Updating the leader:'+ req.params.leaderId +'\n'+
     'Will update the leader: ' + req.body.name + ' with details: ' + req.body.description);
 })
 .delete((req, res, next) => {
-    res.end('Deleting leader:'+req.param);
+    res.end('Deleting leader:'+req.params.leaderId);
 });
 
 module.exports = leaderRouter;
